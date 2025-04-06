@@ -1,0 +1,9 @@
+To enable the built-in Administrator account in Windows 11 Home edition:
+Launch Command Prompt as administrator.
+To enable:
+net user Administrator /active:yes
+
+After enabling set password.
+
+To disable:
+net user Administrator /active:no.
