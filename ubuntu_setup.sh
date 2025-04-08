@@ -16,7 +16,7 @@ sleep 2
 sudo ubuntu-drivers devices
 echo -e "\n\nInstall essential packages:\n\n"
 sleep 5
-sudo apt install build-essential vim nano git wget curl htop net-tools unrar unzip tar 7zip file-roller
+sudo apt install build-essential vim nano git wget curl htop net-tools unrar unzip tar 7zip file-roller mousepad
 echo -e "\n\nInstall restricted codecs:\n\n"
 sleep 5
 sudo apt install ubuntu-restricted-extras
