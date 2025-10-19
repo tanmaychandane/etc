@@ -1,0 +1,33 @@
+# R Studio WSL (Ubuntu) Setup
+
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y build-essential curl gnupg ca-certificates software-properties-common
+
+# Add CRAN key and repository
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | sudo gpg --dearmor -o /etc/apt/keyrings/cran-archive-keyring.gpg
+
+# Replace $(lsb_release -cs) with your Ubuntu codename if lsb_release is unavailable
+echo "deb [signed-by=/etc/apt/keyrings/cran-archive-keyring.gpg] https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/" | sudo tee /etc/apt/sources.list.d/cran-r.list
+
+sudo apt update
+sudo apt install -y r-base r-base-dev
+
+R --version
+
+sudo apt install gdebi-core
+wget https://download2.rstudio.org/server/jammy/amd64/rstudio-server-2025.09.1-401-amd64.deb
+sudo gdebi rstudio-server-2025.09.1-401-amd64.deb
+
+# Start and enable service
+sudo systemctl enable rstudio-server
+sudo systemctl start rstudio-server
+sudo systemctl start rstudio-server
+sudo systemctl status rstudio-server
+
+# Access via Windows browser
+http://localhost:8787
+
+# Login with your WSL Ubuntu username and password
+
+# Confirm R path: In RStudio, Tools → Global Options → General should detect /usr/bin/R
